@@ -76,7 +76,7 @@
 						</li>
 						<!-- <li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/form'); ?>">Form Pewisata</a>
 						</li> -->
-						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Terdaftar</a>
+						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Daftar Wisatawan</a>
 						</li>
 					</ul>
 				</div>

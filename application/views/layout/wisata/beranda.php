@@ -105,7 +105,7 @@
               <a class="nav-link" href="<?= base_url('C_wisata/form'); ?>">Form wisata</a>
             </li> -->
             <li class="nav-item ">
-              <a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Terdaftar</a>
+              <a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Daftar Wisatawan</a>
             </li>
           </ul>
        </div>
@@ -129,33 +129,12 @@
                  <h1 style="padding-left:10%; margin-top: 10%;margin-bottom:-3px;"><b>DATA WISATAWAN</b></h1>
                  <h1 style="padding-left:10%;padding-top: -5%;"><b>KABUPATEN KUDUS</b></h1>
                  <div class="btn-group col-md-8 p-5">
-                        <a href="<?php echo base_url('C_wisata/form'); ?>" class="btn third">Form Rombongan Wisatawan</a> 
-                      </div>
+                        <a href="<?php echo base_url('C_wisata/form'); ?>" class="btn third">Form Pengunjung</a> 
+                  </div>
                  <!-- <p style="padding-left:10%;">Silahkan baca petunjuk di samping lalu klik tombol dibawah untuk mengisi data wisata</p> -->
                 </div>
                <div class="col-lg-6 col-md-10 col-sm-10">
                <div class="container">
-                    <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="https://placeimg.com/640/480/arch" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="https://placeimg.com/640/480/nature" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="https://placeimg.com/640/480/tech" class="d-block w-100" alt="...">
-                          </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div> -->
                       <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -281,18 +260,22 @@
                     echo tgl_indo($upd[0]['tgl']);?> | <?php echo $time;?>  WIB</h4>
 
                     <br><br>
+                    <!-- carousel -->
                     <div>
                        <div class="card-body" style="background: white;">
-                          <div class="d-lg-flex justify-content-between">
-                            <div class="card-feature mb-5 mb-lg-0">
-                              <div class="feature-icon">
-                                <img src="<?php echo base_url();?>gambar/1.png" alt="" width="250px">
-                              </div>
-                              <div class="card-feature mb-5 mb-lg-0">
-                                <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: 250px; height: 200px;  border-radius: 10px;">
+                          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                      <!-- content carousel -->
+                                      <div class="feature-icon">
+                                        <img src="<?php echo base_url();?>gambar/1.png" alt="" width="250px">
+                                      </div>
+                                      <!-- end carousel -->
+                                      <!-- Content Table -->
+                                      <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: auto; height: auto;  border-radius: 10px;">
                                   <table style="text-align: left;margin-top: 20px;padding-bottom: 10px;line-height: 50px;">
                                     <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Semula&nbsp;</strong></td>
+                                      <td style="padding-left: 10px;"><strong>Jumlah Anak-Anak&nbsp;</strong></td>
                                      <td style="width: 20px;"></td>
                                       <td><strong> :</strong></td>
                                       <td style="width:40px;"></td>
@@ -300,7 +283,7 @@
                                        <td style="text-align: center;"><?php echo $grh[0]['jml_before'];?></td>
                                     </tr>
                                     <tr>
-                                      <td style="padding-left: 10px;"><strong>Tambahan&nbsp;</strong></td>
+                                      <td style="padding-left: 10px;"><strong>Jumlah Orang Dewasa&nbsp;</strong></td>
                                      <td style="width: 20px;"></td>
                                       <td><strong> :</strong></td>
                                       <td style="width:40px;"></td>
@@ -308,7 +291,7 @@
                                        <td style="text-align: center;"><?php echo $grh[0]['jml_tambah'];?></td>
                                     </tr>
                                     <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Sekarang&nbsp;</strong></td>
+                                      <td style="padding-left: 10px;"><strong>Jumlah Keseluruhan&nbsp;</strong></td>
                                       <td style="width: 20px;"></td>
                                       <td><strong> :</strong></td>
                                       <td style="width:40px;"></td>
@@ -316,91 +299,97 @@
                                       <td style="text-align: center;"><?php echo $grh[0]['jml_now'];?></td>
                                     </tr>
                                   </table>
-                                 
+                                  <!-- end content taabel -->
+                                </div>
+                                </div>
+                                <div class="carousel-item">
+                                      <!-- content carousel -->
+                                      <div class="feature-icon">
+                                        <img src="<?php echo base_url();?>gambar/2.png" alt="" width="250px">
+                                      </div>
+                                      <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: auto; height: auto;  border-radius: 10px;">
+                                        <table style="text-align: left;margin-top: 20px;padding-bottom: 10px;line-height: 50px;">
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Anak-Anak&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td><?=$sebelum->jum?></td>-->
+                                            <!--<td>10</td>-->
+                                            <td><?php echo $krn[0]['jml_before'];?>
+                                          </tr>
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Orang Dewasa&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td><?=$sebelum->jum?></td>-->
+                                            <!--<td>10</td>-->
+                                            <td><?php echo $krn[0]['jml_tambah'];?>
+                                          </tr>
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Keseluruhan&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td>12</td>-->
+                                            <td><?php echo $krn[0]['jml_now'];?>
+                                            <!--<td><?php echo $krn[0]['karantina'];?></td>-->
+                                          </tr>
+                                        </table>
+                                      
+                                      </div>
+                                    </div>
+                                <div class="carousel-item">
+                                      <!-- content carousel -->
+                                      <div class="feature-icon">
+                                        <img src="<?php echo base_url();?>gambar/3.png" alt="" width="250px">
+                                      </div>
+                                      <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: auto; height: auto;  border-radius: 10px;">
+                                        <table style="text-align: left;margin-top: 20px;padding-bottom: 10px;line-height: 50px;">
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Anak-Anak&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td><?=$sebelum3->jum?></td>-->
+                                            <!--<td>38</td>-->
+                                            <td><?php echo $rsn[0]['jml_before'];?></center></td>
+                                          </tr>
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Orang Dewasa&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td><?=$sebelum3->jum?></td>-->
+                                            <!--<td>38</td>-->
+                                            <td><?php echo $rsn[0]['jml_tambah'];?></center></td>
+                                          </tr>
+                                          <tr>
+                                            <td style="padding-left: 10px;"><strong>Jumlah Keseluruhan&nbsp;</strong></td>
+                                            <td style="width: 20px;"></td>
+                                            <td><strong> :</strong></td>
+                                            <td style="width:40px;"></td>
+                                            <!--<td><center><?php echo $rsn[0]['rusun'];?></center></td>-->
+                                            <!--<td>39</td>-->
+                                            <td><?php echo $rsn[0]['jml_now'];?></center></td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                </div>
                                 </div>
                               </div>
-                              
+                              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                  <span class="sr-only">Next</span>
+                              </a>
                             </div>
-
-                            <div class="card-feature mb-5 mb-lg-0">
-                              <div class="feature-icon">
-                                <img src="<?php echo base_url();?>gambar/2.png" alt="" width="250px">
-                                
-                              </div>
-                              <div class="card-feature mb-5 mb-lg-0">
-                                <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: 250px; height: 200px;  border-radius: 10px;">
-                                  <table style="text-align: left;margin-top: 20px;padding-bottom: 10px;line-height: 50px;">
-                                    <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Semula&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td><?=$sebelum->jum?></td>-->
-                                      <!--<td>10</td>-->
-                                      <td><?php echo $krn[0]['jml_before'];?>
-                                    </tr>
-                                    <tr>
-                                      <td style="padding-left: 10px;"><strong>Tambahan&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td><?=$sebelum->jum?></td>-->
-                                      <!--<td>10</td>-->
-                                      <td><?php echo $krn[0]['jml_tambah'];?>
-                                    </tr>
-                                     <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Sekarang&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td>12</td>-->
-                                      <td><?php echo $krn[0]['jml_now'];?>
-                                      <!--<td><?php echo $krn[0]['karantina'];?></td>-->
-                                    </tr>
-                                  </table>
-                                 
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card-feature mb-5 mb-lg-0">
-                              <div class="feature-icon">
-                                <img src="<?php echo base_url();?>gambar/3.png" alt="" width="250px">
-                                
-                              </div>
-                              <div class="card-feature mb-5 mb-lg-0">
-                                <div class="kotak" style="border:3px solid #dd2003; margin-top:40px; width: 250px; height: 200px;  border-radius: 10px;">
-                                  <table style="text-align: left;margin-top: 20px;padding-bottom: 10px;line-height: 50px;">
-                                    <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Semula&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td><?=$sebelum3->jum?></td>-->
-                                      <!--<td>38</td>-->
-                                      <td><?php echo $rsn[0]['jml_before'];?></center></td>
-                                    </tr>
-                                    <tr>
-                                      <td style="padding-left: 10px;"><strong>Tambahan&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td><?=$sebelum3->jum?></td>-->
-                                      <!--<td>38</td>-->
-                                      <td><?php echo $rsn[0]['jml_tambah'];?></center></td>
-                                    </tr>
-                                     <tr>
-                                      <td style="padding-left: 10px;"><strong>Jumlah Sekarang&nbsp;</strong></td>
-                                      <td style="width: 20px;"></td>
-                                      <td><strong> :</strong></td>
-                                      <td style="width:40px;"></td>
-                                      <!--<td><center><?php echo $rsn[0]['rusun'];?></center></td>-->
-                                      <!--<td>39</td>-->
-                                      <td><?php echo $rsn[0]['jml_now'];?></center></td>
-                                    </tr>
-                                  </table>
-                                 
-                                </div>
-                              </div>
+                    <!-- end carousel -->
+                          
                             </div>
                       </div>
 
