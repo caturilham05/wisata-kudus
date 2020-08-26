@@ -253,6 +253,21 @@ class M_wisata extends CI_Model{
 		//  print_r($query);exit();
 		// echo "</pre>";
 	}
+
+	public function kirim($post){
+		{
+			$params['nama_rombongan'] = $post['nama_rombongan'];
+			$params['no_hp'] = $post['no_hp'];
+			$params['negara'] = sha1($post['negara']);
+			$params['asal'] = $post['asal'];
+			$params['dewasa'] = $post['dewasa'];
+			$params['anak'] = $post['anak'];
+			$params['destinasi_wisata'] = $post['destinasi_wisata'];
+			$params['destinasi_wisata_lainnya'] = $post['destinasi_wisata_lainnya'];
+			$this->db->insert('data_wisata', $params);
+	
+		}
+	}
 	
 }
 

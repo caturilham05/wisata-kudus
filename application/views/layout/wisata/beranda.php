@@ -105,7 +105,7 @@
               <a class="nav-link" href="<?= base_url('C_wisata/form'); ?>">Form wisata</a>
             </li> -->
             <li class="nav-item ">
-              <a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Daftar Wisatawan</a>
+              <a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Data Pengunjung</a>
             </li>
           </ul>
        </div>

@@ -76,7 +76,7 @@
 						</li>
 						<!-- <li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/form'); ?>">Form Pewisata</a>
 						</li> -->
-						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Daftar Wisatawan</a>
+						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Data Pengunjung</a>
 						</li>
 					</ul>
 				</div>
@@ -123,7 +123,7 @@
 						<div class="carda" style="padding: 15px;">
 							<div class="card-body">
 
-								<form action="<?= base_url('C_wisata/create'); ?>" method="post" id="myForm" onSubmit="return validasi(this)">
+								<!-- id="myForm" onSubmit="return validasi(this)" -->
 									<div class="form-row">
 										<div class="form-group col-12">
 											<div style="margin-bottom:15px;  text-align:center; letter-spacing: 2px;">
@@ -143,20 +143,23 @@
 										</div> -->
 									
 									  <!-- PENGISIAN FORM ROMBONGAN  -->
-										<div class="form-group col-12">
+									<form action="<?= base_url('C_wisata/kirim') ?>" method="POST">
+										<div class="form-group col-12"  <?= form_error('nama_rombongan') ? 'has-error' : null?>>
 											<label for="fm-nama">Nama Rombongan</label>
-											<input type="text" class="form-control" id="fm-nama" placeholder="Nama Lengkap" name="nama_rombongan" autocomplete="off" required>
+											<input type="text" class="form-control" id="fm-nama" placeholder="Nama Lengkap" name="nama_rombongan" autocomplete="off" >
+											<span class="glyphicon glyphicon-user form-control-feedback"></span>
+											<?= form_error('nama_rombongan')?>
 										</div>
 
-										<div class="form-group col-12">
+										<div class="form-group col-12"  <?= form_error('no_hp') ? 'has-error' : null?>>
 											<label for="fm-tgl-lahir">Nomor Handphone</label>
-											<input type="number" class="form-control no-spinner" id="fm-no-telp" placeholder="08xxxxx" name="no_hp" required value="" maxlength="13">
+											<input type="number" class="form-control no-spinner" id="fm-no-telp" placeholder="08xxxxx" name="no_hp"  value="" maxlength="13">
 										</div>
 
-										<div class="form-group col-12 mt-1" id="negara">
+										<div class="form-group col-12 mt-1" id="negara"  <?= form_error('negara') ? 'has-error' : null?>>
 											<hr>
 											<label for="fm-nama-negara">Negara Asal <strong></strong></label>
-											<select class='form-control select2' data-width="100%" name="negara" required>
+											<select class='form-control select2' data-width="100%" name="negara" >
 												<option value='Indonesia'>Indonesia</option>
 												<?php
 												foreach ($negara as $n) {
@@ -169,9 +172,9 @@
 											</p>
 										</div>
 
-										<div class="form-group col-12" id="kab">
+										<div class="form-group col-12" id="kab"  <?= form_error('asal') ? 'has-error' : null?>>
 											<label for="fm-kota-asal">Kota / Kabupaten Asal</label>
-											<select class="form-control select2" name="asal" id="kabupaten" class="form-control" data-width="100%" required>
+											<select class="form-control select2" name="asal" id="kabupaten" class="form-control" data-width="100%" >
 												<option value='pilih'>Pilih Kabupaten/Kota</option>
 												<?php
 												foreach ($kab as $n) {
@@ -184,14 +187,14 @@
 											</span>
 										</div>
 
-										<div class="form-group col-12">
+										<div class="form-group col-12"  <?= form_error('dewasa') ? 'has-error' : null?>>
 											<label for="fm-no-telp">Dewasa</label>
-											<input type="number" class="form-control no-spinner" id="" placeholder="0" name="dewasa" required value="">
+											<input type="number" class="form-control no-spinner" id="" placeholder="0" name="dewasa"  value="">
 										</div>
 										
-										<div class="form-group col-12">
+										<div class="form-group col-12"  <?= form_error('anak') ? 'has-error' : null?>>
 											<label for="fm-no-telp">Anak</label>
-											<input type="number" class="form-control no-spinner" id="" placeholder="0" name="anak" required value="" maxlength="">
+											<input type="number" class="form-control no-spinner" id="" placeholder="0" name="anak"  value="" maxlength="">
 										</div>
 										
 										<div class="form-group col-12">
@@ -199,7 +202,7 @@
 											<h4 class="subtitle">Tujuan Wisata</h4>
 										</div>
 
-										<div class="form-group col-12">
+										<div class="form-group col-12"  <?= form_error('destinasi_wisata') ? 'has-error' : null?>>
 
 											<div class="form-check">
 												<div class="custom-control custom-checkbox">
@@ -219,23 +222,20 @@
 													<label class="custom-control-label" for="fm-kesanggupan-5">Museum Purbakala Pati Ayam</label>
 												</div>
 												
-												<div class="checkbox">
+												<div class="checkbox"  <?= form_error('destinasi_wisata_lainnya') ? 'has-error' : null?>>
 													<label class="form-check-label">Tujuan Wisata Lain :</label>
-													<textarea rows="3" class="form-control" name="destinasi_wisata"></textarea>
+													<textarea rows="3" class="form-control" name="destinasi_wisata_lainnya"></textarea>
 												</div>
 												
 											</div>
 										</div><hr>
 										
 									  <!-- END PENGISIAN FORM ROMBONGAN  -->
-
-										
-
 									  <!-- BUTTON FORM ROMBONGAN -->
 										<div class="form-group mt-12 col-12 rounded-15">
 											<div class="form-group mt-4 col-12">
 												<input type="hidden" name="_token" value="K5LcdgYsGq30M756cGQ8oXwQWrs0Oi544mdmH3hw">
-												<button type="submit" name="submit" class="btn btn-danger  rounded-15 shadow bg-red" style="letter-spacing: 1px;">SETUJU DAN SIMPAN</button>
+												<button type="submit" name="submit" value="submit" class="btn btn-danger  rounded-15 shadow bg-red" style="letter-spacing: 1px;">SIMPAN</button>
 											</div>
 										</div>
 									  <!-- END BUTTON FORM ROMBONGAN -->
@@ -299,86 +299,86 @@
 		});
 	}
 </script> -->
-<!-- <script type="text/javascript">
-	$(function() {
-
-		$.ajaxSetup({
-			type: "POST",
-			url: "<?php echo base_url('C_mudik/ambil_data') ?>",
-			cache: false,
-		});
-
-		$("#provinsi").change(function() {
-
-			var value = $(this).val();
-			if (value > 0) {
-				$.ajax({
-					data: {
-						modul: 'kabupaten',
-						id: value
-					},
-					success: function(respond) {
-						$("#kabupaten-kota").html(respond);
-					}
-				})
-			}
-
-		});
-
-
-		$("#kabupaten-kota").change(function() {
-			var value = $(this).val();
-			if (value > 0) {
-				$.ajax({
-					data: {
-						modul: 'kecamatan',
-						id: value,
-						required: 'required'
-					},
-					success: function(respond) {
-						$("#kecamatan").html(respond);
-					}
-				})
-			}
-		})
-
-		$("#kecamatan").change(function() {
-			var value = $(this).val();
-			if (value > 0) {
-				$.ajax({
-					data: {
-						modul: 'kelurahan',
-						id: value
-					},
-					success: function(respond) {
-						$("#kelurahan-desa").html(respond);
-					}
-				})
-			}
-		})
-
-		$("#negara").change(function() {
-
-			var value = $(this).val();
-			if (value > 0) {
-				$.ajax({
-					data: {
-						modul: 'districts',
-						id: value
-					},
-					success: function(respond) {
-						$("#districts").html(respond);
-					}
-				})
-			}
-
-		});
-
-	})
-</script> -->
-
-
 <script type="text/javascript">
+		// $(function() {
+
+		// $.ajaxSetup({
+		// 	type: "POST",
+		// 	url: "<?php echo base_url('C_mudik/ambil_data') ?>",
+		// 	cache: false,
+		// });
+
+		// $("#provinsi").change(function() {
+
+		// 	var value = $(this).val();
+		// 	if (value > 0) {
+		// 		$.ajax({
+		// 			data: {
+		// 				modul: 'kabupaten',
+		// 				id: value
+		// 			},
+		// 			success: function(respond) {
+		// 				$("#kabupaten-kota").html(respond);
+		// 			}
+		// 		})
+		// 	}
+
+		// });
+
+
+		// $("#kabupaten-kota").change(function() {
+		// 	var value = $(this).val();
+		// 	if (value > 0) {
+		// 		$.ajax({
+		// 			data: {
+		// 				modul: 'kecamatan',
+		// 				id: value,
+		// 				required: 'required'
+		// 			},
+		// 			success: function(respond) {
+		// 				$("#kecamatan").html(respond);
+		// 			}
+		// 		})
+		// 	}
+		// })
+
+		// $("#kecamatan").change(function() {
+		// 	var value = $(this).val();
+		// 	if (value > 0) {
+		// 		$.ajax({
+		// 			data: {
+		// 				modul: 'kelurahan',
+		// 				id: value
+		// 			},
+		// 			success: function(respond) {
+		// 				$("#kelurahan-desa").html(respond);
+		// 			}
+		// 		})
+		// 	}
+		// })
+
+		// $("#negara").change(function() {
+
+		// 	var value = $(this).val();
+		// 	if (value > 0) {
+		// 		$.ajax({
+		// 			data: {
+		// 				modul: 'districts',
+		// 				id: value
+		// 			},
+		// 			success: function(respond) {
+		// 				$("#districts").html(respond);
+		// 			}
+		// 		})
+		// 	}
+
+		// });
+
+	//})
+</script>
+
+
+<!-- <script type="text/javascript">
 	function validasi() {
 		var nip = document.forms["myForm"]["nik"].value;
 		var kab = document.forms["myForm"]["kabupaten"].value;
@@ -396,7 +396,7 @@
 			return false;
 		}
 	}
-</script>
+</script> -->
 <script type="text/javascript">
 	if (self == top) {
 		function netbro_cache_analytics(fn, callback) {
@@ -432,7 +432,7 @@
 
 	});
 </script>
-<script>
+<!-- <script>
 	function hanyaAngka(evt) {
 		var charCode = (evt.which) ? evt.which : event.keyCode
 		if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -440,7 +440,7 @@
 			return false;
 		return true;
 	}
-</script>
+</script> -->
 <script type='text/javascript'>
 	$(window).load(function() {
 		$("#negara").change(function() {
@@ -469,19 +469,19 @@
 	// 	});
 	// })
 
-	$(window).load(function() {
-		$(":radio").click(function() {
-			$("#modal").hide()
-			if ($(this).val() == "Menara") {
-				$("#modal").show();
-			}
-		});
-		$(":radio").click(function() {
-			if (($(this).val() == "Gunung Muria") || ($(this).val() == "Taman Krida Wisata") || ($(this).val() == "taman Ternadi")) {
-				$("#modal").hide();
-			}
-		});
-	})
+	// $(window).load(function() {
+	// 	$(":radio").click(function() {
+	// 		$("#modal").hide()
+	// 		if ($(this).val() == "Menara") {
+	// 			$("#modal").show();
+	// 		}
+	// 	});
+	// 	$(":radio").click(function() {
+	// 		if (($(this).val() == "Gunung Muria") || ($(this).val() == "Taman Krida Wisata") || ($(this).val() == "taman Ternadi")) {
+	// 			$("#modal").hide();
+	// 		}
+	// 	});
+	// })
 </script>
 
 

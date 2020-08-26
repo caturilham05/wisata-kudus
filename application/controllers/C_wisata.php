@@ -104,25 +104,32 @@ class C_wisata extends  CI_Controller
 		}
 	}
 
-	function create()
+	function tambah()
 	{
 		// $this->form_validation->set_rules('nik', '<span class="text text-danger" style="font-size:9pt; font-weight:bold">NIK Sudah Ada, Coba Lagi</span>', 'is_unique[data_wisata.nik]');
 		// $this->form_validation->set_rules('kectujuan', 'kectujuan', 'required');
 		// $this->form_validation->set_message('check_default', '<span class="text text-danger" style="font-size:9pt; font-weight:bold">Kecamatan Belum Dipilih</span');
 		if ($this->form_validation->run() === TRUE) {
 			//  if(isset($_POST['submit'])){
-			$nama = stripHTMLtags(trim($this->input->post('nama', 'true')));
-			$destinasi_wisata = stripHTMLtags(trim($this->input->post('destinasi_wisata', 'true')));
-			$tanggal = stripHTMLtags(trim($this->input->post('tanggal', 'true')));
-			$jenis_kelamin = stripHTMLtags(trim($this->input->post('jenis_kelamin', 'true')));
+			$nama_rombongan = stripHTMLtags(trim($this->input->post('nama_rombongan', 'true')));
 			$no_hp = stripHTMLtags(trim($this->input->post('no_hp', 'true')));
+			$negara = stripHTMLtags(trim($this->input->post('negara', 'true')));
+			$asal = stripHTMLtags(trim($this->input->post('asal', 'true')));
+			$dewasa = stripHTMLtags(trim($this->input->post('dewasa', 'true')));
+			$anak = stripHTMLtags(trim($this->input->post('anak', 'true')));
+			$destinasi_wisata = stripHTMLtags(trim($this->input->post('destinasi_wisata', 'true')));
+			$destinasi_wisata_lainnya = stripHTMLtags(trim(imlode(","($this->input->post('destinasi_wisata_lainnya', 'true')))));
 
 			$data = array(
-				'nama' => $nama,
-				'destinasi_wisata' => $nama,
-				'tanggal' => $tanggal,
-				'jenis_kelamin' => $jenis_kelamin,
+				'nama_rombongan' => $nama_rombongan,
 				'no_hp' => $no_hp,
+				'negara' => $negara,
+				'asal' => $asal,
+				'dewasa' => $dewasa,
+				'anak' => $anak,
+				'destinasi_wisata' => $destinasi_wisata,
+				'destinasi_wisata_lainnya' => $destinasi_wisata_lainnya
+
 			);
 			// echo "<pre>";
 			// print_r($data);exit();
@@ -134,12 +141,17 @@ class C_wisata extends  CI_Controller
 			} else {
 				$this->session->set_flashdata('msg', 'Insert Data Gagal');
 			}
-		} 
-		echo "<script>window.location='".site_url('c_wisata')."';</script>";
+			echo "<script>window.location='".site_url('C_wisata')."';</script>";
+		}else{
+			echo "<script>
+			alert('NIK SUDAH DIGUNAKAN, Coba Lagi')
+			</script>";
+			redirect('C_wisata/create','refresh');
+		}
 		
 	}
 
-	function tambah()
+	function create()
 	{
 		$this->form_validation->set_rules('nik', '<span class="text text-danger" style="font-size:9pt; font-weight:bold">NIK Sudah Ada, Coba Lagi</span>', 'is_unique[data_wisata.nik]');
 		// $this->form_validation->set_rules('kectujuan', 'kectujuan', 'required');
@@ -214,10 +226,35 @@ class C_wisata extends  CI_Controller
 		}
 	}
 
-	public function post_wisata(){
+	 function kirim(){
+		$this->form_validation->set_rules('nama_rombongan', 'Nama Rombongan Harus Diisi', 'required');
+        $this->form_validation->set_rules('no_hp', 'Nomor Hp Harus Diisi', 'required');
+        $this->form_validation->set_rules('negara', 'Negara Harus Diisi', 'required');
+        $this->form_validation->set_rules('asal', 'Kabupaten atau Kota Harus Diisi', 'required');
+        $this->form_validation->set_rules('dewasa', 'Jumlah Dewasa Harus Diisi', 'required');
+        $this->form_validation->set_rules('anak', 'Jumlah Anak Harus Diisi', 'required');
+        $this->form_validation->set_rules('destinasi_wisata', 'Destinasi Wisata Harus Diisi', 'required');
+        $this->form_validation->set_rules('destinasi_wisata_lainnya', 'Destinasi Wisata Lainnya Harus Diisi', 'required');
 
+        if ($this->form_validation->run() === FALSE)
+        {
+			echo "<script>alert('Data Gagal Ditambahkan!!')</script>";
+			redirect('C_wisata');
+        }
+        else
+        {
+            $post = $this->input->post(null, TRUE);
+            $this->m_wisata->kirim($post);
+            if($this->db->affected_rows() > 0)
+            {
+                echo "<script>alert('Data Berhasil Disimpan!');</script>";
+            }
+            echo "<script>window.location='".site_url('/')."';</script>";
+			var_dump($post);
+		}
 	}
 
+	
 
 
 	public function list()

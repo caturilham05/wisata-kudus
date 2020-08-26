@@ -41,7 +41,7 @@
 						<!-- <li class="nav-item ">
 							<a class="nav-link" href="<?= base_url('C_mudik/form'); ?>">Form wisatawan</a>
 						</li> -->
-						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Daftar Wisatawan</a>
+						<li class="nav-item "><a class="nav-link" href="<?= base_url('C_wisata/list'); ?>">Data Pengunjung</a>
 						</li>
 					</ul>
 				</div>

@@ -243,6 +243,11 @@ class M_mudik extends CI_Model{
 		$balai = $this->db->query("SELECT jml_before, jml_now, jml_tambah FROM karantina_tb WHERE nama_tempat='balaidiklat' ");
 		return $balai->result_array();
 	}
+
+	function jml_sunan_kudus(){
+		$menara = $this->db->query("select dewasa, anak from data_wisata");
+		return $menara->result_array();
+	}
 	
 }
 
